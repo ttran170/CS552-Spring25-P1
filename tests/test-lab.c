@@ -204,6 +204,38 @@ int idx = list_indexof(lst_, data);
 TEST_ASSERT_EQUAL_INT64(-1, idx);
 free(data);
 }
+void test_nullList_add(void)
+{
+list_t *lst = NULL;
+void *data = alloc_data(22);
+TEST_ASSERT_TRUE(list_add(lst, data)==NULL);
+list_destroy(&lst);
+destroy_data(data);
+}
+void test_nullList_indexof(void)
+{
+list_t *lst = NULL;
+void *data = alloc_data(22);
+TEST_ASSERT_TRUE(list_indexof(lst, data)==-1);
+list_destroy(&lst);
+destroy_data(data);
+}
+void test_nullList(void)
+{
+list_t *lst = NULL;
+TEST_ASSERT_TRUE(list_remove_index(lst, 1)==NULL);
+list_destroy(&lst);
+}
+void test_nullList(void)
+{
+list_t *lst = NULL;
+void *data = alloc_data(22);
+TEST_ASSERT_TRUE(list_add(lst, data)==NULL);
+TEST_ASSERT_TRUE(list_indexof(lst, data)==-1);
+TEST_ASSERT_TRUE(list_remove_index(lst, 1)==NULL);
+list_destroy(&lst);
+destroy_data(data);
+}
 int main(void) {
 UNITY_BEGIN();
 RUN_TEST(test_create_destroy);
@@ -217,5 +249,6 @@ RUN_TEST(test_removeAll);
 RUN_TEST(test_indexOf0);
 RUN_TEST(test_indexOf3);
 RUN_TEST(test_notInList);
+RUN_TEST(test_nullList);
 return UNITY_END();
 }
