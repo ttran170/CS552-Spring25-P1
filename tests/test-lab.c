@@ -220,21 +220,11 @@ TEST_ASSERT_TRUE(list_indexof(lst, data)==-1);
 list_destroy(&lst);
 destroy_data(data);
 }
-void test_nullList(void)
+void test_nullList_remove_index(void)
 {
 list_t *lst = NULL;
 TEST_ASSERT_TRUE(list_remove_index(lst, 1)==NULL);
 list_destroy(&lst);
-}
-void test_nullList(void)
-{
-list_t *lst = NULL;
-void *data = alloc_data(22);
-TEST_ASSERT_TRUE(list_add(lst, data)==NULL);
-TEST_ASSERT_TRUE(list_indexof(lst, data)==-1);
-TEST_ASSERT_TRUE(list_remove_index(lst, 1)==NULL);
-list_destroy(&lst);
-destroy_data(data);
 }
 int main(void) {
 UNITY_BEGIN();
@@ -249,6 +239,8 @@ RUN_TEST(test_removeAll);
 RUN_TEST(test_indexOf0);
 RUN_TEST(test_indexOf3);
 RUN_TEST(test_notInList);
-RUN_TEST(test_nullList);
+RUN_TEST(test_nullList_add);
+RUN_TEST(test_nullList_indexof);
+RUN_TEST(test_nullList_remove_index);
 return UNITY_END();
 }
