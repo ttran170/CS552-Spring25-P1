@@ -209,7 +209,6 @@ void test_nullList_add(void)
 list_t *lst = NULL;
 void *data = alloc_data(22);
 TEST_ASSERT_TRUE(list_add(lst, data)==NULL);
-list_destroy(&lst);
 destroy_data(data);
 }
 void test_nullList_indexof(void)
@@ -217,14 +216,12 @@ void test_nullList_indexof(void)
 list_t *lst = NULL;
 void *data = alloc_data(22);
 TEST_ASSERT_TRUE(list_indexof(lst, data)==-1);
-list_destroy(&lst);
 destroy_data(data);
 }
 void test_nullList_remove_index(void)
 {
 list_t *lst = NULL;
 TEST_ASSERT_TRUE(list_remove_index(lst, 1)==NULL);
-list_destroy(&lst);
 }
 int main(void) {
 UNITY_BEGIN();
