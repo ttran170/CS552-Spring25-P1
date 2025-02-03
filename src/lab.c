@@ -63,6 +63,7 @@ list_t *list_add(list_t *list, void *data){
     new_node->prev = list->head;
     list->head->next = new_node;
     sec_node->prev = new_node;
+    list->size++;
     return list;
 
 }
@@ -83,7 +84,7 @@ void *list_remove_index(list_t *list, size_t index){
         curr_node->prev->next = curr_node->next;
         curr_node->next->prev = curr_node->prev;
         free(curr_node);
-        
+        list->size--;
     }
     return out;
 }
